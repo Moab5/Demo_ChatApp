@@ -6,14 +6,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () { print("Button Clicked");
-        },
-      ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Let's sign you in!",
               style: TextStyle(
@@ -27,6 +22,7 @@ class LoginPage extends StatelessWidget {
               height: 300,
             ),
             Text("Welcome Back! \nYou've been missed.",
+              textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 17,
               ),
