@@ -25,13 +25,15 @@ class ChatPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              children: [
-                ChatBubble(alignment: Alignment.centerRight,
-                    message: "Hi! This is Moab!"),
-                ChatBubble(alignment: Alignment.centerLeft,
-                    message: "Hi, Moab! Nice to meet you.")
-              ],
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return ChatBubble(
+                    alignment: index % 2 == 0 ?
+                      Alignment.centerRight : Alignment.centerLeft,
+                    message: index % 2 == 0 ?
+                      "Hi! This is Moab!" : "Hi, Moab! Nice to meet you.");
+              }
             ),
           ),
           Container(
