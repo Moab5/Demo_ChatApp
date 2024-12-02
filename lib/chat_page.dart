@@ -3,7 +3,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+  ChatPage({super.key});
+
+  final chatMessageController = TextEditingController();
+
+  void onSendButtonPressed () {
+    print("Chat Message: ${chatMessageController.text}");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +24,7 @@ class ChatPage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                print("Icon clicked!");
+                Navigator.pop(context);
               },
               icon: Icon(Icons.logout))
         ],
@@ -52,8 +58,23 @@ class ChatPage extends StatelessWidget {
                       Icons.add,
                       color: Colors.white,
                     )),
+                Expanded(
+                  child: TextField(
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 3,
+                    minLines: 1,
+                    textCapitalization: TextCapitalization.sentences,
+                    controller: chatMessageController,
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Type your message...",
+                      hintStyle: TextStyle(color: Colors.blueGrey)
+                    ),
+                  ),
+                ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: onSendButtonPressed,
                     icon: Icon(
                       Icons.send,
                       color: Colors.white,

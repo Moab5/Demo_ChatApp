@@ -8,11 +8,16 @@ class LoginPage extends StatelessWidget {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  void loginUser () {
+  void loginUser (context) {
     if (_formKey.currentState != null && _formKey.currentState!.validate()) {
       print(usernameController);
       print(passwordController);
 
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder:
+            (context) => ChatPage()),
+      );
       print("Login Successful!");
     } else {
       print("Login unsuccessful");
@@ -98,7 +103,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       ElevatedButton(
-                          onPressed: loginUser,
+                          onPressed: () {loginUser(context);},
                           child: Text(
                             'Login',
                             style: TextStyle(fontSize: 25),
@@ -109,7 +114,7 @@ class LoginPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder:
-                                  (context) => const ChatPage()),
+                                  (context) => ChatPage()),
                             );
                           },
                           child: Text(
