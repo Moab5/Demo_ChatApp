@@ -1,5 +1,3 @@
-import 'package:chat_app/chat_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -13,10 +11,8 @@ class LoginPage extends StatelessWidget {
       print(usernameController);
       print(passwordController);
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder:
-            (context) => ChatPage()),
+      Navigator.pushReplacementNamed(
+        context, '/chat', arguments: usernameController.text
       );
       print("Login Successful!");
     } else {
@@ -66,8 +62,8 @@ class LoginPage extends StatelessWidget {
                             TextFormField(
                               validator: (value) {
                                 if (value != null && value.isNotEmpty &&
-                                    value.length < 5) {
-                                  return "Username should be more than 5 characters";
+                                    value.length < 4) {
+                                  return "Username should be more than 3 characters";
                                 } else if (value != null && value.isEmpty) {
                                   return "Please enter username";
                                 }
@@ -111,10 +107,9 @@ class LoginPage extends StatelessWidget {
                       ),
                       TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder:
-                                  (context) => ChatPage()),
+                            Navigator.pushNamed(
+                              context, '/chat',
+                                arguments: usernameController.text
                             );
                           },
                           child: Text(

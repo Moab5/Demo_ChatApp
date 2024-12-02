@@ -1,5 +1,4 @@
 import 'package:chat_app/Widgets/chat_bubble.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -13,18 +12,19 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Center(
-          child: Text("Hi, Moab",
+          child: Text("Hi $username",
             style: TextStyle(fontWeight: FontWeight.bold),),
         ),
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/');
               },
               icon: Icon(Icons.logout))
         ],

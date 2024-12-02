@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'chat_page.dart';
 import 'login_page.dart';
 
 void main() {
-  runApp(ChatApp());
+  runApp(const ChatApp());
 }
 
 class ChatApp extends StatelessWidget {
+  const ChatApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +15,12 @@ class ChatApp extends StatelessWidget {
     return MaterialApp(
         title: "Demo Chat App",
         theme: ThemeData(
-            colorScheme: ColorScheme.light(primary: Colors.blue,
+            colorScheme: const ColorScheme.light(primary: Colors.blue,
             ),
-            appBarTheme: AppBarTheme(backgroundColor: Colors.blue)
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.blue)
         ),
-        home: LoginPage()
+        home: LoginPage(),
+      routes: {'/chat': (context) => ChatPage()},
     );
   }
 }
