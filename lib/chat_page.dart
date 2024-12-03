@@ -1,4 +1,5 @@
 import 'package:chat_app/Widgets/chat_bubble.dart';
+import 'package:chat_app/models/chat_message_entity.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
@@ -38,8 +39,19 @@ class ChatPage extends StatelessWidget {
                 return ChatBubble(
                     alignment: index % 2 == 0 ?
                       Alignment.centerRight : Alignment.centerLeft,
-                    message: index % 2 == 0 ?
-                      "Hi! This is Moab!" : "Hi, Moab! Nice to meet you.");
+                    entity: index % 2 == 0 ?
+                      ChatMessageEntity(
+                          text: "Hi, I'm Moab.",
+                          id: "001",
+                          createdAt: DateTime.now().second,
+                          author: Author(userName: username),
+                          imageUrl: "assets/chat_bubble.jpeg"
+                      ) : ChatMessageEntity(
+                      text: "Hello $username.",
+                      id: "002",
+                      createdAt: DateTime.now().second,
+                      author: Author(userName: "ChatBot"),
+                    ));
               }
             ),
           ),
