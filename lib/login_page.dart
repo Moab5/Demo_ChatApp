@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Widgets/login_textfield.dart';
+
 class LoginPage extends StatelessWidget {
 
   final usernameController = TextEditingController();
@@ -59,7 +61,8 @@ class LoginPage extends StatelessWidget {
                         key: _formKey,
                         child: Column(
                           children: [
-                            TextFormField(
+                            LoginTextfield(
+                              hintText: "Useername",
                               validator: (value) {
                                 if (value != null && value.isNotEmpty &&
                                     value.length < 4) {
@@ -70,15 +73,12 @@ class LoginPage extends StatelessWidget {
                                 return null;
                               },
                               controller: usernameController,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: "Username"
-                              ),
                             ),
                             SizedBox(
                               height: 20,
                             ),
-                            TextFormField(
+                            LoginTextfield(
+                              hintText: "Password",
                               validator: (value) {
                                 if (value != null && value.isNotEmpty &&
                                     value.length < 8) {
@@ -90,10 +90,6 @@ class LoginPage extends StatelessWidget {
                               },
                               controller: passwordController,
                               obscureText: true,
-                              decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  hintText: "Password"
-                              ),
                             ),
                           ],
                         ),
