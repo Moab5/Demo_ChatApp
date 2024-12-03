@@ -21,8 +21,8 @@ class LoginTextfield extends StatelessWidget {
       validator: validator,
       controller: controller,
       decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          hintText: "$hintText"
+          border: const OutlineInputBorder(),
+          hintText: hintText
       ),
     );
   }

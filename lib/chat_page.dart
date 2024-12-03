@@ -19,14 +19,14 @@ class ChatPage extends StatelessWidget {
         elevation: 0,
         title: Center(
           child: Text("Hi $username",
-            style: TextStyle(fontWeight: FontWeight.bold),),
+            style: const TextStyle(fontWeight: FontWeight.bold),),
         ),
         actions: [
           IconButton(
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/');
               },
-              icon: Icon(Icons.logout))
+              icon: const Icon(Icons.logout))
         ],
       ),
       body: Column(
@@ -45,7 +45,7 @@ class ChatPage extends StatelessWidget {
           ),
           Container(
             height: 60,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20))
             ),
@@ -54,7 +54,7 @@ class ChatPage extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.add,
                       color: Colors.white,
                     )),
@@ -65,8 +65,8 @@ class ChatPage extends StatelessWidget {
                     minLines: 1,
                     textCapitalization: TextCapitalization.sentences,
                     controller: chatMessageController,
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: "Type your message...",
                       hintStyle: TextStyle(color: Colors.blueGrey)
@@ -75,7 +75,7 @@ class ChatPage extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: onSendButtonPressed,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.send,
                       color: Colors.white,
                     ))

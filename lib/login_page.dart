@@ -8,6 +8,8 @@ class LoginPage extends StatelessWidget {
   final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  LoginPage({super.key});
+
   void loginUser (context) {
     if (_formKey.currentState != null && _formKey.currentState!.validate()) {
       print(usernameController);
@@ -38,7 +40,7 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text("Let's sign you in!",
+                      const Text("Let's sign you in!",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 30,
@@ -46,11 +48,11 @@ class LoginPage extends StatelessWidget {
                           color: Colors.black54
                         ),
                       ),
-                      Image.network(
-                        "https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                      Image.asset(
+                        'assets/home_page.jpeg',
                         height: 300,
                       ),
-                      Text("Welcome Back! \nYou've been missed.",
+                      const Text("Welcome Back! \nYou've been missed.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 17,
@@ -62,7 +64,7 @@ class LoginPage extends StatelessWidget {
                         child: Column(
                           children: [
                             LoginTextfield(
-                              hintText: "Useername",
+                              hintText: "Username",
                               validator: (value) {
                                 if (value != null && value.isNotEmpty &&
                                     value.length < 4) {
@@ -74,7 +76,7 @@ class LoginPage extends StatelessWidget {
                               },
                               controller: usernameController,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             LoginTextfield(
@@ -96,7 +98,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       ElevatedButton(
                           onPressed: () {loginUser(context);},
-                          child: Text(
+                          child: const Text(
                             'Login',
                             style: TextStyle(fontSize: 25),
                           )
@@ -108,7 +110,7 @@ class LoginPage extends StatelessWidget {
                                 arguments: usernameController.text
                             );
                           },
-                          child: Text(
+                          child: const Text(
                               'Continue as Guest'
                           )
                       )
