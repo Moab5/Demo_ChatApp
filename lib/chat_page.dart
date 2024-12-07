@@ -1,5 +1,6 @@
 import 'dart:convert';
-
+import 'package:chat_app/models/image_model.dart';
+import 'package:http/http.dart' as http;
 import 'package:chat_app/Widgets/chat_bubble.dart';
 import 'package:chat_app/Widgets/chat_input.dart';
 import 'package:chat_app/models/chat_message_entity.dart';
@@ -30,6 +31,22 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
+  _getNetworkImages() async {
+    var endpointUrl = Uri.parse('https://pixelford.com/api2/images');
+
+    final response = await http.get(endpointUrl);
+
+    if (response.statusCode == 200) {
+      final List<dynamic> decodedList = jsonDecode(response.body) as List;
+
+      final List<PixelFordImage> _imageList = decodedList.map((listItem) {
+        return PixelFordImage.fromJson(listItem);
+      }).toList();
+
+      print(_imageList[0].urlFullSize);
+    }
+  }
+
   @override
   void initState() {
     _loadInitialMessages();
@@ -43,6 +60,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    _getNetworkImages();
     final username = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
